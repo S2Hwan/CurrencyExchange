@@ -39,7 +39,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "goToDetail", sender: self)
     }
     
-   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? DetailViewController {
+            destination.currency = currency[(tableView.indexPathForSelectedRow?.row)!]
+        }
+    }
     
     
     
@@ -47,12 +51,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func downloadJSON() {
         
         let jsonURL = "https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=OHtOxoabzlAmw7iv7WH8QkWVgW7bVH51&searchdate=20180102&data=AP01"
+        
+
+        
+
         let url = URL(string: jsonURL)
         
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error == nil {
                 do {
                     self.currency = try JSONDecoder().decode([CurrencyData].self, from: data!)
+                    
+                    print("success")
                     
                     DispatchQueue.main.sync {
                         self.tableView.reloadData()

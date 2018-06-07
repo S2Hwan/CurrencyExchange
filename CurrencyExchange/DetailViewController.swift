@@ -21,9 +21,10 @@ class DetailViewController: UIViewController {
         
         cur_nmLabel.text = currency?.cur_nm
         cur_unitLabel.text = currency?.cur_unit
-        deal_bas_rLabel.text = currency?.deal_bas_r
+        deal_bas_rLabel.text = currency?.kftc_deal_bas_r
 
         
+
     }
 
 
@@ -32,14 +33,18 @@ class DetailViewController: UIViewController {
         let inputData = inputTextFiled.text
         let rate = deal_bas_rLabel.text
         
-        deal_bas_rLabel.text = String(Double(inputData!)! * Double(rate!)!)
+        deal_bas_rLabel.text = String(Float(inputData!)! * Float(rate!)!)
+        
+       
+        
+
         
     }
     
    
     @IBAction func resetButton(_ sender: UIButton) {
         
-        deal_bas_rLabel.text = currency?.deal_bas_r
+        deal_bas_rLabel.text = currency?.kftc_deal_bas_r
         inputTextFiled.text = ""
     }
     
