@@ -1,0 +1,12 @@
+PODS:
+  - TextFieldEffects (1.4.0)
+
+DEPENDENCIES:
+  - TextFieldEffects
+
+SPEC CHECKSUMS:
+  TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
+
+PODFILE CHECKSUM: 0a6009b4995fb385b771e9d874f200cb8362b17e
+
+COCOAPODS: 1.4.0
